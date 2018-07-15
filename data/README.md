@@ -5,6 +5,7 @@ This repository contains data required to analyze the libraries of members of th
 ## List of members ##
 
 A sample of 1000 Steam-ID of members of this group can be parsed from the following URL:
+
 ```https://steamcommunity.com/groups/ResetEra/memberslistxml/?xml=1&p=1```
 
 To build an exhaustive list of members, you will need to:
@@ -24,10 +25,13 @@ Save this key to ```data/api_key.txt```.
 ## Steam library ##
 
 The most recently played games of a user with Steam-ID STEAMID are available at:
+
 ```https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?key=MYAPIKEY&steamid=STEAMID```
 
 The Steam library of a user with Steam-ID STEAMID are available at:
+
 ```https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=MYAPIKEY&steamid=STEAMID```
 
 The Steam library, without free-to-play games, of a user with Steam-ID STEAMID are available at:
+
 ```https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=MYAPIKEY&steamid=STEAMID&include_played_free_games=0```

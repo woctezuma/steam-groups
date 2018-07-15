@@ -34,7 +34,7 @@ def load_member_list():
 
 
 def get_library_folder():
-    data_path = get_data_folder() + 'library/'
+    data_path = get_data_folder() + 'library_with_f2p/'
 
     pathlib.Path(data_path).mkdir(parents=True, exist_ok=True)
 
@@ -79,6 +79,7 @@ def download_user_data(steam_id, output_folder, steam_api_url, query_count=0):
         data_request = dict()
         data_request['key'] = load_api_key()
         data_request['steamid'] = steam_id
+        data_request['include_played_free_games'] = 1
 
         response = requests.get(steam_api_url, params=data_request)
         data_as_json = response.json()

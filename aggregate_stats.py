@@ -114,7 +114,7 @@ def print_ranking(ranking, data, criterion, max_ranking_length=100):
     return
 
 
-def main():
+def print_every_ranking(max_ranking_length=100):
     data = batch_load_user_data()
 
     criteria = ['num_players_forever', 'playtime_forever', 'num_players_2weeks', 'playtime_2weeks']
@@ -122,7 +122,13 @@ def main():
     for criterion in criteria:
         ranking = compute_ranking(data, criterion)
 
-        print_ranking(ranking, data, criterion)
+        print_ranking(ranking, data, criterion, max_ranking_length)
+
+    return
+
+
+def main():
+    print_every_ranking()
 
     return True
 

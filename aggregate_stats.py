@@ -6,7 +6,7 @@ import steamspypi
 from steam_groups import load_member_list, get_library_folder
 
 
-def load_user_data(steam_id, data_folder=None):
+def load_user_data(steam_id, data_folder=None, verbose=False):
     if data_folder is None:
         data_folder = get_library_folder()
 
@@ -16,24 +16,26 @@ def load_user_data(steam_id, data_folder=None):
         with open(data_filename, 'r', encoding="utf8") as in_json_file:
             data_as_json = json.load(in_json_file)
 
-        print('Loading data from cache for Steam-ID {}'.format(steam_id))
+        if verbose:
+            print('Loading data from cache for Steam-ID {}'.format(steam_id))
 
     except FileNotFoundError:
         data_as_json = {}
 
-        print('No data could be found for Steam-ID {}'.format(steam_id))
+        if verbose:
+            print('No data could be found for Steam-ID {}'.format(steam_id))
 
     return data_as_json
 
 
-def batch_load_user_data(data_folder=None):
+def batch_load_user_data(data_folder=None, verbose=False):
     if data_folder is None:
         data_folder = get_library_folder()
 
     data = dict()
 
     for steam_id in load_member_list():
-        user_data = load_user_data(steam_id, data_folder)
+        user_data = load_user_data(steam_id, data_folder, verbose)
 
         if len(user_data) == 0:
             continue
@@ -41,7 +43,8 @@ def batch_load_user_data(data_folder=None):
         try:
             game_list = user_data['response']['games']
         except KeyError:
-            print('Steam-ID {} does not share library information.'.format(steam_id))
+            if verbose:
+                print('Steam-ID {} does not share library information.'.format(steam_id))
             game_list = []
 
         for game in game_list:

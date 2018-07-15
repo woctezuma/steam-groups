@@ -28,10 +28,10 @@ The most recently played games of a user with Steam-ID STEAMID are available at:
 
 ```https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?key=MYAPIKEY&steamid=STEAMID```
 
-The Steam library of a user with Steam-ID STEAMID are available at:
+The Steam library of a user with Steam-ID STEAMID is available at:
 
 ```https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=MYAPIKEY&steamid=STEAMID```
 
-The Steam library, without free-to-play games, of a user with Steam-ID STEAMID are available at:
+The Steam library, without free-to-play games, of a user with Steam-ID STEAMID is available at:
 
 ```https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=MYAPIKEY&steamid=STEAMID&include_played_free_games=0```

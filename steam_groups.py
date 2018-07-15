@@ -130,7 +130,7 @@ def batch_download():
     for steam_id in member_list:
         library_data, query_count = download_user_library(steam_id, query_count)
 
-        recently_played_data, query_count = download_user_recently_played_games(steam_id, query_count)
+        # recently_played_data, query_count = download_user_recently_played_games(steam_id, query_count)
 
     return
 

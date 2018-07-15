@@ -12,10 +12,14 @@ To build an exhaustive list of members, you will need to:
 - aggregate the samples of 1000 Steam-ID,
 - remove any  duplicate Steam-ID, for instance using [Notepadd++](https://stackoverflow.com/a/3958364) or Python directly.
 
+Save this list to ```data/members_list.txt```.
+
 ## Steam API key ##
 
-To access the libary of a Steam user, you will need your private API key, which can be found at:
+To access the libary of a Steam user, you will need your private Steam API key, which can be found at:
 ```https://steamcommunity.com/dev/apikey```
+
+Save this key to ```data/api_key.txt```.
 
 ## Steam library ##
 

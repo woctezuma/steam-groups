@@ -6,10 +6,7 @@ import steamspypi
 from steam_groups import load_member_list, get_library_folder
 
 
-def load_user_data(steam_id, data_folder=None, verbose=False):
-    if data_folder is None:
-        data_folder = get_library_folder()
-
+def load_user_data(steam_id, data_folder, verbose=False):
     data_filename = data_folder + str(steam_id) + '.json'
 
     try:
@@ -28,9 +25,9 @@ def load_user_data(steam_id, data_folder=None, verbose=False):
     return data_as_json
 
 
-def batch_load_user_data(data_folder=None, verbose=False):
+def batch_load_user_data(include_free_games=True, data_folder=None, verbose=False):
     if data_folder is None:
-        data_folder = get_library_folder()
+        data_folder = get_library_folder(include_free_games)
 
     data = dict()
 
@@ -127,8 +124,8 @@ def print_ranking(ranking, data, criterion, max_ranking_length=100):
     return
 
 
-def print_every_ranking(max_ranking_length=100):
-    data = batch_load_user_data()
+def print_every_ranking(include_free_games=True, max_ranking_length=100):
+    data = batch_load_user_data(include_free_games)
 
     criteria = ['playtime_forever', 'num_players_forever', 'playtime_2weeks', 'num_players_2weeks']
 
@@ -141,7 +138,9 @@ def print_every_ranking(max_ranking_length=100):
 
 
 def main():
-    print_every_ranking()
+    include_free_games = True
+    max_ranking_length = 1000
+    print_every_ranking(include_free_games, max_ranking_length)
 
     return True
 

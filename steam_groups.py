@@ -33,8 +33,11 @@ def load_member_list():
     return member_list
 
 
-def get_library_folder():
-    data_path = get_data_folder() + 'library_with_f2p/'
+def get_library_folder(include_free_games=True):
+    if include_free_games:
+        data_path = get_data_folder() + 'library_with_f2p/'
+    else:
+        data_path = get_data_folder() + 'library/'
 
     pathlib.Path(data_path).mkdir(parents=True, exist_ok=True)
 
@@ -45,7 +48,7 @@ def get_steam_api_library_url():
     return 'https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/'
 
 
-def download_user_data(steam_id, output_folder, steam_api_url, query_count=0):
+def download_user_data(steam_id, output_folder, steam_api_url, query_count=0, include_free_games=True):
     rate_limits = get_steam_api_rate_limits()
 
     library_filename = output_folder + str(steam_id) + '.json'
@@ -67,7 +70,10 @@ def download_user_data(steam_id, output_folder, steam_api_url, query_count=0):
         data_request = dict()
         data_request['key'] = load_api_key()
         data_request['steamid'] = steam_id
-        data_request['include_played_free_games'] = 1
+        if include_free_games:
+            data_request['include_played_free_games'] = 1
+        else:
+            data_request['include_played_free_games'] = 0
 
         response = requests.get(steam_api_url, params=data_request)
         data_as_json = response.json()
@@ -82,11 +88,12 @@ def download_user_data(steam_id, output_folder, steam_api_url, query_count=0):
     return data_as_json, query_count
 
 
-def download_user_library(steam_id, query_count=0):
-    output_folder = get_library_folder()
+def download_user_library(steam_id, query_count=0, include_free_games=True):
+    output_folder = get_library_folder(include_free_games)
     steam_api_url = get_steam_api_library_url()
 
-    library_data, query_count = download_user_data(steam_id, output_folder, steam_api_url, query_count)
+    library_data, query_count = download_user_data(steam_id, output_folder, steam_api_url, query_count,
+                                                   include_free_games)
 
     return library_data, query_count
 
@@ -102,19 +109,20 @@ def get_steam_api_rate_limits():
     return rate_limits
 
 
-def batch_download():
+def batch_download(include_free_games=True):
     member_list = load_member_list()
 
     query_count = 0
 
     for steam_id in member_list:
-        library_data, query_count = download_user_library(steam_id, query_count)
+        library_data, query_count = download_user_library(steam_id, query_count, include_free_games)
 
     return
 
 
 def main():
-    batch_download()
+    include_free_games = True
+    batch_download(include_free_games)
 
     return True
 

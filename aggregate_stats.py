@@ -90,7 +90,17 @@ def print_ranking(ranking, data, criterion, max_ranking_length=100):
 
     width = 1 + math.floor(math.log10(max_ranking_length))
 
-    print(f'\nRanking based on {criterion}\n')
+    if criterion == 'playtime_forever':
+        title = 'The most played games ever'
+    elif criterion == 'num_players_forever':
+        title = 'The games with the highest number of owners'
+    elif criterion == 'playtime_2weeks':
+        title = 'The most played games during the first two weeks of July'
+    else:
+        assert (criterion == 'num_players_2weeks')
+        title = 'The games which were started by the highest number of people during the first two weeks of July'
+
+    print(f'\n{title}\n')
 
     for app_id in ranking:
 
@@ -120,7 +130,7 @@ def print_ranking(ranking, data, criterion, max_ranking_length=100):
 def print_every_ranking(max_ranking_length=100):
     data = batch_load_user_data()
 
-    criteria = ['num_players_forever', 'playtime_forever', 'num_players_2weeks', 'playtime_2weeks']
+    criteria = ['playtime_forever', 'num_players_forever', 'playtime_2weeks', 'num_players_2weeks']
 
     for criterion in criteria:
         ranking = compute_ranking(data, criterion)

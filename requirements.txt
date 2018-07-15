@@ -1,1 +1,2 @@
 requests==2.19.1
+steamspypi==0.9.1

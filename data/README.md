@@ -32,6 +32,6 @@ The Steam library of a user with Steam-ID STEAMID is available at:
 
 ```https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=MYAPIKEY&steamid=STEAMID```
 
-The Steam library, without free-to-play games, of a user with Steam-ID STEAMID is available at:
+The Steam library, with free-to-play games, of a user with Steam-ID STEAMID is available at:
 
-```https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=MYAPIKEY&steamid=STEAMID&include_played_free_games=0```
+```https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=MYAPIKEY&steamid=STEAMID&include_played_free_games=1```

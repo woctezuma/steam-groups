@@ -5,8 +5,17 @@ import steam_groups
 
 class TestSteamGroupsMethods(unittest.TestCase):
 
-    def test_main(self):
-        self.assertTrue(steam_groups.main())
+    def test_download_user_library(self):
+        steam_id = 76561198028705366
+        library_data, query_count = steam_groups.download_user_library(steam_id)
+
+        self.assertTrue(query_count == 1)
+
+    def test_download_user_recently_played_games(self):
+        steam_id = 76561198028705366
+        recently_played_data, query_count = steam_groups.download_user_recently_played_games(steam_id)
+
+        self.assertTrue(query_count == 1)
 
 
 if __name__ == '__main__':

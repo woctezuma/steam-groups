@@ -41,20 +41,8 @@ def get_library_folder():
     return data_path
 
 
-def get_recently_played_folder():
-    data_path = get_data_folder() + 'recently_played/'
-
-    pathlib.Path(data_path).mkdir(parents=True, exist_ok=True)
-
-    return data_path
-
-
 def get_steam_api_library_url():
     return 'https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/'
-
-
-def get_steam_api_recently_played_url():
-    return 'https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/'
 
 
 def download_user_data(steam_id, output_folder, steam_api_url, query_count=0):
@@ -103,15 +91,6 @@ def download_user_library(steam_id, query_count=0):
     return library_data, query_count
 
 
-def download_user_recently_played_games(steam_id, query_count=0):
-    output_folder = get_recently_played_folder()
-    steam_api_url = get_steam_api_recently_played_url()
-
-    recently_played_data, query_count = download_user_data(steam_id, output_folder, steam_api_url, query_count)
-
-    return recently_played_data, query_count
-
-
 def get_steam_api_rate_limits():
     # Objective: return the rate limits of Steam API.
 
@@ -130,8 +109,6 @@ def batch_download():
 
     for steam_id in member_list:
         library_data, query_count = download_user_library(steam_id, query_count)
-
-        # recently_played_data, query_count = download_user_recently_played_games(steam_id, query_count)
 
     return
 

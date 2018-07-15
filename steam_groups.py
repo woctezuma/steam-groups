@@ -132,7 +132,7 @@ def batch_download():
 
         recently_played_data, query_count = download_user_recently_played_games(steam_id, query_count)
 
-    return True
+    return
 
 
 def main():

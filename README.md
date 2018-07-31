@@ -10,6 +10,8 @@
   [Codecov]: https://codecov.io/gh/woctezuma/steam-groups
   [Codecov image]: https://codecov.io/gh/woctezuma/steam-groups/branch/master/graph/badge.svg
 
+> Disclaimer: The Travis build fails because I cannot publicly share my own API key in `data/api_key.txt`.
+
 This repository contains code to analyze the libraries of members of Steam groups.
 
 ## Requirements ##

@@ -94,7 +94,8 @@ def print_ranking(ranking, data, criterion, max_ranking_length=100):
     elif criterion == 'playtime_2weeks':
         title = 'The most played games during the first two weeks of July'
     else:
-        assert (criterion == 'num_players_2weeks')
+        if not (criterion == 'num_players_2weeks'):
+            raise AssertionError()
         title = 'The games which were started by the highest number of people during the first two weeks of July'
 
     print(f'\n{title}\n')

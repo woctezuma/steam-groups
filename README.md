@@ -1,19 +1,19 @@
 # Steam Groups
  
-[![Build status][Build image]][Build]
-[![Updates][Dependency image]][PyUp]
-[![Python 3][Python3 image]][PyUp]
-[![Code coverage][Codecov image]][Codecov]
+[![Build status][build image]][build]
+[![Updates][dependency image]][pyup]
+[![Python 3][python3 image]][pyup]
+[![Code coverage][codecov image]][codecov]
 
-  [Build]: https://travis-ci.org/woctezuma/steam-groups
-  [Build image]: https://travis-ci.org/woctezuma/steam-groups.svg?branch=master
+  [build]: https://travis-ci.org/woctezuma/steam-groups
+  [build image]: https://travis-ci.org/woctezuma/steam-groups.svg?branch=master
 
-  [PyUp]: https://pyup.io/repos/github/woctezuma/steam-groups/
-  [Dependency image]: https://pyup.io/repos/github/woctezuma/steam-groups/shield.svg
-  [Python3 image]: https://pyup.io/repos/github/woctezuma/steam-groups/python-3-shield.svg
+  [pyup]: https://pyup.io/repos/github/woctezuma/steam-groups/
+  [dependency image]: https://pyup.io/repos/github/woctezuma/steam-groups/shield.svg
+  [python3 image]: https://pyup.io/repos/github/woctezuma/steam-groups/python-3-shield.svg
 
-  [Codecov]: https://codecov.io/gh/woctezuma/steam-groups
-  [Codecov image]: https://codecov.io/gh/woctezuma/steam-groups/branch/master/graph/badge.svg
+  [codecov]: https://codecov.io/gh/woctezuma/steam-groups
+  [codecov image]: https://codecov.io/gh/woctezuma/steam-groups/branch/master/graph/badge.svg
 
 > Disclaimer: The Travis build fails because I cannot publicly share my own API key in `data/api_key.txt`.
 

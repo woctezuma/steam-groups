@@ -2,7 +2,7 @@
 
 This repository contains data required to analyze the libraries of members of the [ResetEra](https://steamcommunity.com/groups/ResetEra/) Steam group.
 
-## List of members ##
+## List of members
 
 A sample of 1000 Steam-ID of members of this group can be parsed from the following URL:
 
@@ -15,14 +15,14 @@ To build an exhaustive list of members, you will need to:
 
 Save this list to ```data/members_list.txt```.
 
-## Steam API key ##
+## Steam API key
 
 To access the libary of a Steam user, you will need your private Steam API key, which can be found at:
 ```https://steamcommunity.com/dev/apikey```
 
 Save this key to ```data/api_key.txt```.
 
-## Steam library ##
+## Steam library
 
 The most recently played games of a user with Steam-ID STEAMID are available at:
 

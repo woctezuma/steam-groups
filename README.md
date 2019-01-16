@@ -14,7 +14,7 @@
 
 This repository contains code to analyze the libraries of members of Steam groups.
 
-## Requirements ##
+## Requirements
 
 -   Install the latest version of [Python 3.X](https://www.python.org/downloads/).
 
@@ -24,7 +24,7 @@ This repository contains code to analyze the libraries of members of Steam group
 pip install -r requirements.txt
 ```
 
-## Usage ##
+## Usage
 
 -   Download the list of members of the Steam group of interest. (cf. `data/README.md`)
 

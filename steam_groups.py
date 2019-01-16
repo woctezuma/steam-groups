@@ -115,7 +115,7 @@ def batch_download(include_free_games=True):
     query_count = 0
 
     for steam_id in member_list:
-        library_data, query_count = download_user_library(steam_id, query_count, include_free_games)
+        _, query_count = download_user_library(steam_id, query_count, include_free_games)
 
     return
 

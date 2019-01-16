@@ -5,16 +5,6 @@
 [![Python 3][python3 image]][pyup]
 [![Code coverage][codecov image]][codecov]
 
-  [build]: https://travis-ci.org/woctezuma/steam-groups
-  [build image]: https://travis-ci.org/woctezuma/steam-groups.svg?branch=master
-
-  [pyup]: https://pyup.io/repos/github/woctezuma/steam-groups/
-  [dependency image]: https://pyup.io/repos/github/woctezuma/steam-groups/shield.svg
-  [python3 image]: https://pyup.io/repos/github/woctezuma/steam-groups/python-3-shield.svg
-
-  [codecov]: https://codecov.io/gh/woctezuma/steam-groups
-  [codecov image]: https://codecov.io/gh/woctezuma/steam-groups/branch/master/graph/badge.svg
-
 > Disclaimer: The Travis build fails because I cannot publicly share my own API key in `data/api_key.txt`.
 
 This repository contains code to analyze the libraries of members of Steam groups.
@@ -46,3 +36,13 @@ python steam_groups.py
 ```bash
 python aggregate_stats.py
 ```
+
+[build]: https://travis-ci.org/woctezuma/steam-groups
+[build image]: https://travis-ci.org/woctezuma/steam-groups.svg?branch=master
+
+[pyup]: https://pyup.io/repos/github/woctezuma/steam-groups/
+[dependency image]: https://pyup.io/repos/github/woctezuma/steam-groups/shield.svg
+[python3 image]: https://pyup.io/repos/github/woctezuma/steam-groups/python-3-shield.svg
+
+[codecov]: https://codecov.io/gh/woctezuma/steam-groups
+[codecov image]: https://codecov.io/gh/woctezuma/steam-groups/branch/master/graph/badge.svg

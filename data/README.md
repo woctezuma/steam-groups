@@ -9,9 +9,9 @@ A sample of 1000 Steam-ID of members of this group can be parsed from the follow
 ```https://steamcommunity.com/groups/ResetEra/memberslistxml/?xml=1&p=1```
 
 To build an exhaustive list of members, you will need to:
-- iterate over the page numbers (parameter ```&p=```) of the group,
-- aggregate the samples of 1000 Steam-ID,
-- remove any  duplicate Steam-ID, for instance using [Notepadd++](https://stackoverflow.com/a/3958364) or Python directly.
+-   iterate over the page numbers (parameter ```&p=```) of the group,
+-   aggregate the samples of 1000 Steam-ID,
+-   remove any  duplicate Steam-ID, for instance using [Notepadd++](https://stackoverflow.com/a/3958364) or Python directly.
 
 Save this list to ```data/members_list.txt```.
 

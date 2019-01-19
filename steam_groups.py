@@ -19,9 +19,13 @@ def get_member_list_filename():
 
 def load_api_key():
     api_key_filename = get_api_key_filename()
-    with open(api_key_filename, 'r') as f:
-        data = f.readlines()
-    api_key = data[0]
+    try:
+        with open(api_key_filename, 'r') as f:
+            data = f.readlines()
+        api_key = data[0]
+    except FileNotFoundError:
+        print('The file containing your private API key could not be found. The queries are bound to fail.')
+        api_key = None
     return api_key
 
 
@@ -68,7 +72,9 @@ def download_user_data(steam_id, output_folder, steam_api_url, query_count=0, in
         print("Downloading and caching data for Steam-ID {}".format(steam_id))
 
         data_request = dict()
-        data_request['key'] = load_api_key()
+        api_key = load_api_key()
+        if api_key is not None:
+            data_request['key'] = api_key
         data_request['steamid'] = steam_id
         if include_free_games:
             data_request['include_played_free_games'] = 1

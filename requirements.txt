@@ -1,2 +1,2 @@
-requests==2.21.0
+requests==2.22.0
 steamspypi==1.0.0

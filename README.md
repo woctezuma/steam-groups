@@ -34,8 +34,8 @@ python steam_groups.py
 python aggregate_stats.py
 ```
 
-[build]: https://travis-ci.org/woctezuma/steam-groups
-[build image]: https://travis-ci.org/woctezuma/steam-groups.svg?branch=master
+[build]: <https://github.com/woctezuma/steam-groups/actions>
+[build image]: <https://github.com/woctezuma/steam-groups/workflows/Python application/badge.svg?branch=master>
 
 [pyup]: https://pyup.io/repos/github/woctezuma/steam-groups/
 [dependency image]: https://pyup.io/repos/github/woctezuma/steam-groups/shield.svg

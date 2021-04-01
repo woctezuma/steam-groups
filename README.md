@@ -5,7 +5,7 @@
 [![Python 3][python3 image]][pyup]
 [![Code coverage][codecov image]][codecov]
 
-> Disclaimer: you will have to fill in your own API key in `data/api_key.txt` or in environment variable API_KEY.
+> Disclaimer: you will have to fill in your own API key in `data/api_key.txt`, or in the environment variable `API_KEY`.
 
 This repository contains code to analyze the libraries of members of Steam groups.
 

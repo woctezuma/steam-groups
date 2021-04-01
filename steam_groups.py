@@ -23,7 +23,7 @@ def get_api_key_environment_variable():
     # and has to be stored as an environement variable.
     #
     # Caveat: you have to fill in the name chosen for your "repository secret" on Github!
-    return 'STEAM_WEB_API_KEY'
+    return 'API_KEY'
 
 
 def load_api_key():

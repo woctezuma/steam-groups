@@ -1,4 +1,5 @@
 import json
+import os
 import pathlib
 import time
 
@@ -17,6 +18,14 @@ def get_member_list_filename():
     return get_data_folder() + 'members_list.txt'
 
 
+def get_api_key_environment_variable():
+    # NB: this is mostly useful for unit tests with continuous integration. The API key cannot be stored in a text file,
+    # and has to be stored as an environement variable.
+    #
+    # Caveat: you have to fill in the name chosen for your "repository secret" on Github!
+    return 'STEAM_WEB_API_KEY'
+
+
 def load_api_key():
     api_key_filename = get_api_key_filename()
     try:
@@ -24,8 +33,16 @@ def load_api_key():
             data = f.readlines()
         api_key = data[0]
     except FileNotFoundError:
-        print('The file containing your private API key could not be found. The queries are bound to fail.')
-        api_key = None
+        print('The file containing your private API key could not be found.')
+
+        env_var = get_api_key_environment_variable()
+        # Reference: https://stackoverflow.com/a/4907053/376454
+        api_key = os.getenv(key=env_var, default=None)
+
+        if api_key is None:
+             print('An environement variable with your private API key could not be found. Queries are bound to fail.')
+        else:
+            print('Your private API key was found in an environment variable ({}).'.format(env_var))
     return api_key
 
 

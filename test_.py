@@ -4,7 +4,6 @@ import steam_groups
 
 
 class TestSteamGroupsMethods(unittest.TestCase):
-
     def test_download_user_library(self):
         steam_id = 76561198028705366
         _, query_count = steam_groups.download_user_library(steam_id)

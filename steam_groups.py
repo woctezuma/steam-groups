@@ -40,9 +40,15 @@ def load_api_key():
         api_key = os.getenv(key=env_var, default=None)
 
         if api_key is None:
-             print('An environement variable with your private API key could not be found. Queries are bound to fail.')
+            print(
+                'An environement variable with your private API key could not be found. Queries are bound to fail.',
+            )
         else:
-            print('Your private API key was found in an environment variable ({}).'.format(env_var))
+            print(
+                'Your private API key was found in an environment variable ({}).'.format(
+                    env_var,
+                ),
+            )
     return api_key
 
 
@@ -69,7 +75,13 @@ def get_steam_api_library_url():
     return 'https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/'
 
 
-def download_user_data(steam_id, output_folder, steam_api_url, query_count=0, include_free_games=True):
+def download_user_data(
+    steam_id,
+    output_folder,
+    steam_api_url,
+    query_count=0,
+    include_free_games=True,
+):
     rate_limits = get_steam_api_rate_limits()
 
     library_filename = output_folder + str(steam_id) + '.json'
@@ -79,10 +91,14 @@ def download_user_data(steam_id, output_folder, steam_api_url, query_count=0, in
             data_as_json = json.load(in_json_file)
         print('Loading data from cache for Steam-ID {}'.format(steam_id))
     except FileNotFoundError:
-
         if query_count >= rate_limits['max_num_queries']:
             cooldown_duration = rate_limits['cooldown']
-            print('Number of queries {} reached. Cooldown: {} seconds'.format(query_count, cooldown_duration))
+            print(
+                'Number of queries {} reached. Cooldown: {} seconds'.format(
+                    query_count,
+                    cooldown_duration,
+                ),
+            )
             time.sleep(cooldown_duration)
             query_count = 0
 
@@ -115,8 +131,13 @@ def download_user_library(steam_id, query_count=0, include_free_games=True):
     output_folder = get_library_folder(include_free_games)
     steam_api_url = get_steam_api_library_url()
 
-    library_data, query_count = download_user_data(steam_id, output_folder, steam_api_url, query_count,
-                                                   include_free_games)
+    library_data, query_count = download_user_data(
+        steam_id,
+        output_folder,
+        steam_api_url,
+        query_count,
+        include_free_games,
+    )
 
     return library_data, query_count
 
@@ -138,7 +159,11 @@ def batch_download(include_free_games=True):
     query_count = 0
 
     for steam_id in member_list:
-        _, query_count = download_user_library(steam_id, query_count, include_free_games)
+        _, query_count = download_user_library(
+            steam_id,
+            query_count,
+            include_free_games,
+        )
 
     return
 

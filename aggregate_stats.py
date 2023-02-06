@@ -41,7 +41,9 @@ def batch_load_user_data(include_free_games=True, data_folder=None, verbose=Fals
             game_list = user_data['response']['games']
         except KeyError:
             if verbose:
-                print('Steam-ID {} does not share library information.'.format(steam_id))
+                print(
+                    'Steam-ID {} does not share library information.'.format(steam_id),
+                )
             game_list = []
 
         for game in game_list:
@@ -101,7 +103,6 @@ def print_ranking(ranking, data, criterion, max_ranking_length=100):
     print(f'\n{title}\n')
 
     for app_id in ranking:
-
         if counter > max_ranking_length:
             break
 
@@ -128,7 +129,12 @@ def print_ranking(ranking, data, criterion, max_ranking_length=100):
 def print_every_ranking(include_free_games=True, max_ranking_length=100):
     data = batch_load_user_data(include_free_games)
 
-    criteria = ['playtime_forever', 'num_players_forever', 'playtime_2weeks', 'num_players_2weeks']
+    criteria = [
+        'playtime_forever',
+        'num_players_forever',
+        'playtime_2weeks',
+        'num_players_2weeks',
+    ]
 
     for criterion in criteria:
         ranking = compute_ranking(data, criterion)

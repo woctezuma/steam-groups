@@ -3,24 +3,24 @@ import math
 
 import steamspypi
 
-from steam_groups import load_member_list, get_library_folder
+from steam_groups import get_library_folder, load_member_list
 
 
 def load_user_data(steam_id, data_folder, verbose=False):
     data_filename = data_folder + str(steam_id) + '.json'
 
     try:
-        with open(data_filename, 'r', encoding="utf8") as in_json_file:
+        with open(data_filename, encoding="utf8") as in_json_file:
             data_as_json = json.load(in_json_file)
 
         if verbose:
-            print('Loading data from cache for Steam-ID {}'.format(steam_id))
+            print(f'Loading data from cache for Steam-ID {steam_id}')
 
     except FileNotFoundError:
         data_as_json = {}
 
         if verbose:
-            print('No data could be found for Steam-ID {}'.format(steam_id))
+            print(f'No data could be found for Steam-ID {steam_id}')
 
     return data_as_json
 
@@ -29,7 +29,7 @@ def batch_load_user_data(include_free_games=True, data_folder=None, verbose=Fals
     if data_folder is None:
         data_folder = get_library_folder(include_free_games)
 
-    data = dict()
+    data = {}
 
     for steam_id in load_member_list():
         user_data = load_user_data(steam_id, data_folder, verbose)
@@ -42,7 +42,7 @@ def batch_load_user_data(include_free_games=True, data_folder=None, verbose=Fals
         except KeyError:
             if verbose:
                 print(
-                    'Steam-ID {} does not share library information.'.format(steam_id),
+                    f'Steam-ID {steam_id} does not share library information.',
                 )
             game_list = []
 
@@ -55,7 +55,7 @@ def batch_load_user_data(include_free_games=True, data_folder=None, verbose=Fals
                 data[app_id]['num_players_forever'] += 1
                 data[app_id]['playtime_forever'] += playtime_forever
             except KeyError:
-                data[app_id] = dict()
+                data[app_id] = {}
                 data[app_id]['num_players_forever'] = 1
                 data[app_id]['playtime_forever'] = playtime_forever
 

@@ -29,7 +29,7 @@ def get_api_key_environment_variable():
 def load_api_key():
     api_key_filename = get_api_key_filename()
     try:
-        with open(api_key_filename, 'r') as f:
+        with open(api_key_filename) as f:
             data = f.readlines()
         api_key = data[0]
     except FileNotFoundError:
@@ -54,7 +54,7 @@ def load_api_key():
 
 def load_member_list():
     member_list_filename = get_member_list_filename()
-    with open(member_list_filename, 'r') as f:
+    with open(member_list_filename) as f:
         data = f.readlines()
     member_list = [int(steam_id.strip()) for steam_id in data]
     return member_list
@@ -87,9 +87,9 @@ def download_user_data(
     library_filename = output_folder + str(steam_id) + '.json'
 
     try:
-        with open(library_filename, 'r', encoding="utf8") as in_json_file:
+        with open(library_filename, encoding="utf8") as in_json_file:
             data_as_json = json.load(in_json_file)
-        print('Loading data from cache for Steam-ID {}'.format(steam_id))
+        print(f'Loading data from cache for Steam-ID {steam_id}')
     except FileNotFoundError:
         if query_count >= rate_limits['max_num_queries']:
             cooldown_duration = rate_limits['cooldown']
@@ -102,9 +102,9 @@ def download_user_data(
             time.sleep(cooldown_duration)
             query_count = 0
 
-        print("Downloading and caching data for Steam-ID {}".format(steam_id))
+        print(f"Downloading and caching data for Steam-ID {steam_id}")
 
-        data_request = dict()
+        data_request = {}
         api_key = load_api_key()
         if api_key is not None:
             data_request['key'] = api_key

@@ -8,7 +8,7 @@ class TestSteamGroupsMethods(unittest.TestCase):
         steam_id = 76561198028705366
         _, query_count = steam_groups.download_user_library(steam_id)
 
-        self.assertTrue(query_count == 1)
+        assert query_count == 1
 
 
 if __name__ == '__main__':

@@ -1,8 +1,6 @@
 # Steam Groups
  
 [![Build status][build image]][build]
-[![Updates][dependency image]][pyup]
-[![Python 3][python3 image]][pyup]
 [![Code coverage][codecov image]][codecov]
 
 > Disclaimer: you have to fill in your own API key in `data/api_key.txt`, or in the environment variable `API_KEY`.
